@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Home from './components/home';
+import BookShelf from './components/bookshelf';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Navbar bg="primary" variant="dark">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/bookshelf">BookShelf</Nav.Link>
+              <Nav.Link href="/create">Create</Nav.Link>
+            </Nav>
+          </Navbar>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/bookshelf" component={BookShelf} />
+           {/*} <Route path="/read" component={Read} />
+            <Route path="/edit" component={Edit}/>*/}
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
