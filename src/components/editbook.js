@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import axios from 'axios';
+import swal from '../../node_modules/sweetalert2';
 
 class EditBook extends React.Component {
     constructor(props){
@@ -53,8 +54,6 @@ class EditBook extends React.Component {
     }
     
     handleSubmit(e){
-        alert(this.state.Title+ "      " + this.state.Author + "      "  + this.state.Year 
-        +"       "+ this.state.Cover + "      " + this.state.Status);
         e.preventDefault();
 
         const newBook = {
@@ -75,8 +74,16 @@ class EditBook extends React.Component {
                 Cover:'',
                 Status:''
         });
-        // Redirect to bookshelf
-        this.props.history.push('/bookshelf')
+
+        // SweetAlert2 success alerts
+        swal.fire({
+            title: "Book Updated!",
+            text: "Book details successfully updated!",
+            icon: "success",
+        }).then((result)=> {
+            // Send user back to bookshelf
+            this.props.history.push('/bookshelf');
+        });
     }
     render() {
         return (

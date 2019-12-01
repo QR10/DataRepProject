@@ -5,12 +5,11 @@ class Home extends React.Component {
 
   render() {
     return (
-        <div className="App">
-          <header className="text-center py-5 mb-4" style={{backgroundColor: 'rgb(175, 230, 255)'}}>
-            <div className="container">
-                <h1 className="font-weight-light text-white">Welcome</h1>
-            </div>
-          </header>
+        <div className="App jumbotron vertical-center img-full" style={{marginBottom: '0px'}}>
+          <div className="container">
+            <h1 className="display-1" style={{color: 'black'}}>Welcome to Book Keeper</h1>
+            <h4 style={{color: 'rgba(255, 255, 255, 0.61)'}}>Your personal online bookshelf</h4>
+          </div>
         </div>
     );
   }

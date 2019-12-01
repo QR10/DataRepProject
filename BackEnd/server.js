@@ -47,8 +47,6 @@ app.get('/api/books', (req, res) => {
 
 // Get book by id
 app.get('/api/books/:id', (req, res)=>{
-    console.log(req.params.id);
-
     BookModel.findById(req.params.id, (error,data)=>{
         res.json(data);
     })
@@ -56,8 +54,6 @@ app.get('/api/books/:id', (req, res)=>{
 
 // Delete book by id
 app.delete('/api/books/:id', (req, res)=>{
-    console.log(req.params.id);
-
     BookModel.deleteOne({_id:req.params.id},
         (error, data)=> {
             res.json(data);
@@ -66,13 +62,6 @@ app.delete('/api/books/:id', (req, res)=>{
 
 // Post a new book
 app.post('/api/books', (req,res)=>{
-    console.log('Post request Successful');
-    console.log(req.body.title);
-    console.log(req.body.author);
-    console.log(req.body.year);
-    console.log(req.body.cover);
-    console.log(req.body.status);
-
     BookModel.create({
         title:req.body.title, 
         author:req.body.author,
@@ -96,7 +85,6 @@ app.put('/api/books/:id',(req,res)=>{
 
 // Getting a book by id
 app.get('/api/books/:id', (req,res)=>{
-    console.log("GET: "+req.params.id )
     BookModel.findById(req.params.id, (error,data)=>{
         res.json(data);
     })

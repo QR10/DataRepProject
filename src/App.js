@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style/mystyle.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Home from './components/home';
@@ -27,7 +27,7 @@ class App extends React.Component {
             <Route path="/addbook" component={AddBook}/>
             <Route path="/editbook/:id" component={EditBook}/>
           </Switch>
-          <div class="footer-bottom">
+          <div className="footer-bottom">
               Copyright © 2019, All Rights Reserved
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import swal from '../../node_modules/sweetalert2';
 
 class AddBook extends React.Component {
   constructor(props){
@@ -9,7 +10,7 @@ class AddBook extends React.Component {
                   Author:'',
                   Year:'',
                   Cover:'',
-                  Status:''};
+                  Status:'Finished Reading'};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBookTitleChange = this.handleBookTitleChange.bind(this);
@@ -36,28 +37,37 @@ class AddBook extends React.Component {
   }
 
   handleSubmit(e){
-    alert(this.state.Title+ "      " + this.state.Author + "      "  + this.state.Year 
-    +"       "+ this.state.Cover + "      " + this.state.Status);
-    e.preventDefault();
-                const newBook = {
-                  title: this.state.Title,
-                  author: this.state.Author,
-                  year: this.state.Year,
-                  cover: this.state.Cover,
-                  status: this.state.Status
-                };
-          axios.post('http://localhost:4000/api/books',newBook) 
-          .then()
-          .catch();
 
-          this.setState({Title:'',
-                    Author:'',
-                    Year:'',
-                    Cover:'',
-                    Status:''
-            });
-            // Redirect to bookshelf
-            this.props.history.push('/bookshelf')
+    e.preventDefault();
+
+    const newBook = {
+      title: this.state.Title,
+      author: this.state.Author,
+      year: this.state.Year,
+      cover: this.state.Cover,
+      status: this.state.Status
+    };
+
+    axios.post('http://localhost:4000/api/books',newBook) 
+    .then()
+    .catch();
+
+    this.setState({Title:'',
+              Author:'',
+              Year:'',
+              Cover:'',
+              Status:''
+      });
+    
+    // SweetAlert2 success alerts
+    swal.fire({
+      title: "Book added!",
+      text: "New book successfully added!",
+      icon: "success",
+    }).then((result)=> {
+      // Send user back to bookshelf
+      this.props.history.push('/bookshelf');
+    });
   }
 
   render() {
@@ -110,7 +120,6 @@ class AddBook extends React.Component {
           <select
           type='text'
           className='form-control'
-          value={this.state.Status}
           onChange={this.handleBookStatusChange}>
             <option>Finished Reading</option>    
             <option>Currently Reading</option>    
