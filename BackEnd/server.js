@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 4000
-const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+// Database connection
 const mongoDB = 'mongodb+srv://admin:admin@qsdb-6nihr.mongodb.net/project?retryWrites=true&w=majority';
 mongoose.connect(mongoDB,{useNewUrlParser:true});
 
@@ -82,6 +82,24 @@ app.post('/api/books', (req,res)=>{
     });
 
     res.json('post recieved!');
+})
+
+// Update book data
+app.put('/api/books/:id',(req,res)=>{
+    BookModel.findByIdAndUpdate(req.params.id,
+        req.body,
+        {new:true},
+        (error,data)=>{
+            res.json(data);
+        })
+})
+
+// Getting a book by id
+app.get('/api/books/:id', (req,res)=>{
+    console.log("GET: "+req.params.id )
+    BookModel.findById(req.params.id, (error,data)=>{
+        res.json(data);
+    })
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

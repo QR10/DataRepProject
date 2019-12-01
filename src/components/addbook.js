@@ -55,43 +55,49 @@ class AddBook extends React.Component {
                     Year:'',
                     Cover:'',
                     Status:''
-            });    
+            });
+            // Redirect to bookshelf
+            this.props.history.push('/bookshelf')
   }
 
   render() {
     return (
       <div>
-        <h1>Hello from Create component</h1>
-        <form onSubmit={this.handleSubmit}>
+        <header className="text-center py-5 mb-4" style={{backgroundColor: 'rgb(175, 230, 255)'}}>
+            <div className="container">
+                <h1 className="font-weight-light text-white">Add new book</h1>
+            </div>
+        </header>
+        <form onSubmit={this.handleSubmit} className="border border-primary" style={{margin: '50px', textAlign: 'left', padding: "40px"}}>
         <div className='form-group'>
-          <label>Book Title</label>
+          <label>Book Title:</label>
           <input
           type='text'
           className='form-control'
           value={this.state.Title}
           onChange={this.handleBookTitleChange}
-          ></input>
+          required></input>
         </div>
         <div className='form-group'>
-          <label>Book Author</label>
+          <label>Author:</label>
           <input
           type='text'
           className='form-control'
           value={this.state.Author}
           onChange={this.handleBookAuthorChange}
-          ></input>
+          required></input>
         </div>
         <div className='form-group'>
-          <label>Book Year</label>
+          <label>Publish Year:</label>
           <input
           type='text'
           className='form-control'
           value={this.state.Year}
           onChange={this.handleBookYearChange}
-          ></input>
+          required></input>
         </div>
         <div className='form-group'>
-          <label>Book Cover Url</label>
+          <label>Cover Url:</label>
           <textarea
           row='3'
           className='form-control'
@@ -100,7 +106,7 @@ class AddBook extends React.Component {
           ></textarea>
         </div>
         <div className='form-group'>
-          <label>Book Status</label>
+          <label>Status:</label>
           <select
           type='text'
           className='form-control'
@@ -113,6 +119,7 @@ class AddBook extends React.Component {
         </div>
         <div>
           <input
+          className="btn btn-primary"
           type="submit"
           value="Add Book">
           </input>

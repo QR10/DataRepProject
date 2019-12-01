@@ -1,0 +1,17 @@
+.my-bg-primary {
+    background-color: rgb(1, 8, 116);
+}
+.my-bg-secondary {
+    background-color: rgb(175, 230, 255);
+}
+.card-img-top {
+    height: 60vh;
+}
+.footer-bottom{
+	width: 100%;
+	padding: 25px 0;
+	text-align: center;
+    color: #fff;
+    margin-top: 50px;
+	background-color: rgb(1, 8, 116);
+}
