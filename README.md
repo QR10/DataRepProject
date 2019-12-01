@@ -62,4 +62,4 @@ To delete a book you can use the delete button on the desired book, this will pr
 
 A different color will be displayed based on the book status:
 
-![book status] (/userGuideImages/bookStatus.png)
+![book status](/userGuideImages/bookStatus.png)
