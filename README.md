@@ -1,5 +1,5 @@
 # Data Representation and Querying Project 2019
-Mearn application that allows the user to store, delete and update information about 
+MEAN application that allows the user to store, delete and update information about 
 books that the user finished reading, is currently reading or desires to read in the future.  
 
 ### Prerequisites
